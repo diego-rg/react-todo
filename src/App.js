@@ -8,17 +8,27 @@ function App() {
     addTodo([...todos, todo]);//spread para poñer o novo todo en todos
   }
 
-  useEffect(() => {
-    console.log("use effect");
+  function deleteTodo(todo) {
+    let index = todos.indexOf(todo);//creamos o índice do todo creado para poder selecionalo e eliminalo
+    todos.splice(index, 1);
+    addTodo([...todos]);
+  }
+
+  useEffect(() => {//hook que se executa cando o usuario modifica o estado da app
+    console.log("Aplicación actualizada");
   });
 
+  //Todo dentro de un div xa que react solo pode renderizar 1 fillo
   return (
     <div className="App">
       <input type="text" id="input-todo"></input>
       <button onClick={() => {setTodo(document.getElementById("input-todo").value)}}>Añadir tarea</button>
       <ul>
         {todos.map(todo => (
-          <li key={todo.toString()}>{todo}</li>//añadimos as keys que necesita para saber se se modifica o elemento (https://reactjs.org/docs/lists-and-keys.html#keys)
+          <div className="todo" key={todo.toString()}>
+            <li key={todo.toString()}>{todo}</li>
+            <p onClick={() => deleteTodo(todo)}>Eliminar</p>
+          </div>
         ))}
       </ul>
     </div>
