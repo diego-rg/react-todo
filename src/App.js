@@ -27,7 +27,7 @@ function App() {
         {todos.map(todo => (
           <div className="todo" key={todo.toString()}>
             <li key={todo.toString()}>{todo}</li>
-            <p onClick={() => deleteTodo(todo)}>Eliminar</p>
+            <button className="btn-delete-todo" onClick={() => deleteTodo(todo)}>Eliminar</button>
           </div>
         ))}
       </ul>
