@@ -21,8 +21,8 @@ function App() {
   //Todo dentro de un div xa que react solo pode renderizar 1 fillo
   return (
     <div className="App">
-      <input type="text" id="input-todo"></input>
-      <button onClick={() => {setTodo(document.getElementById("input-todo").value)}}>Añadir tarea</button>
+      <input type="text" className="input-todo" id="input-todo" placeholder="Tengo que hacer..." size={50}></input>
+      <button className="btn-add-todo" onClick={() => {setTodo(document.getElementById("input-todo").value)}}>Añadir</button>
       <ul>
         {todos.map(todo => (
           <div className="todo" key={todo.toString()}>
